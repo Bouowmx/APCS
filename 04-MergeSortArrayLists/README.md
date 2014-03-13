@@ -1,0 +1,1 @@
+To search for an item in a sorted collection, start at the middle. If the item is at the middle, return that index. If the number is less than the middle, search in the left half and right half otherwise. Perform the same search (starting in the middle) with the half containing the required number, without need to search in the half.
