@@ -37,6 +37,9 @@ public class ArrayStack<E> {
 	
 	public static void main(String[] args) {
 		ArrayStack<Integer> stack = new ArrayStack<Integer>();
+		stack.push(0);
+		stack.pop();
+		out.println(stack);
 		for (int i = 0; i < 15; i++) {stack.push(i);}
 		out.println(stack);
 		out.println(stack.peek());
