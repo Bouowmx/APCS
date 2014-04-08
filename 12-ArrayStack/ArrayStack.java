@@ -31,6 +31,8 @@ public class ArrayStack<E> {
 		return e;
 	}
 	
+	public int size() {return size;}
+	
 	public String toString() {return Arrays.toString(Arrays.copyOf(stack, size));}
 	
 	public void trimToSize() {stack = Arrays.copyOf(stack, size);}
