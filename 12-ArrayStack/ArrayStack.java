@@ -33,7 +33,14 @@ public class ArrayStack<E> {
 	
 	public int size() {return size;}
 	
-	public String toString() {return Arrays.toString(Arrays.copyOf(stack, size));}
+	public String toString() {
+		String s = "[";
+		for (int i = size - 1; i >= 0; i--) {
+			s += stack[i].toString();
+			if (i != 0) {s += ", ";}
+		}
+		return s + "]";
+	}
 	
 	public void trimToSize() {stack = Arrays.copyOf(stack, size);}
 	
@@ -49,3 +56,4 @@ public class ArrayStack<E> {
 		out.println(stack);
 	}
 }
+
