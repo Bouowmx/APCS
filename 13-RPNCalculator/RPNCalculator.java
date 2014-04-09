@@ -9,7 +9,7 @@ public class RPNCalculator {
 	
 	public static Long evaluate(String expression) {
 		if (!(expression.matches("[ 0-9+\\-\\*/%]*")) || (expression.contains("."))) {
-			out.println("Invalid expression. Only digits 0-9 and operators +, -, *, /, % allowed.");
+			out.println("Invalid expression: only digits 0-9 and operators +, -, *, /, % allowed.");
 			return null;
 		}
 		Scanner parser = new Scanner(expression).useDelimiter(" ");
@@ -29,7 +29,14 @@ public class RPNCalculator {
 				if (next.equals("/")) {stack.push(first / second);}
 				if (next.equals("%")) {stack.push(first % second);}
 			}
-			else {stack.push(new Long(next));}
+			else {
+				if ((next.contains("+")) || (next.contains("-")) || (next.contains("*")) || (next.contains("/")) || (next.contains("%"))) { //I couldn't get a regular expression to work.
+				out.println("Invalid expression: separate values and operators with spaces.");
+				stack.clear();
+				return null;
+			}
+				stack.push(new Long(next));
+			}
 		}
 		if (stack.size() > 1) {
 			out.println("Invalid expression: too many values.");
@@ -56,3 +63,4 @@ public class RPNCalculator {
 		}
 	}
 }
+
