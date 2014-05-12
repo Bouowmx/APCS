@@ -30,11 +30,18 @@ public class RPNCalculator {
 				if (next.equals("%")) {stack.push(first % second);}
 			}
 			else {
+<<<<<<< HEAD
+				if (next.matches("[+\\-\\*/%]+")) {
+					out.println("Invalid expression: separate values and operators with spaces.");
+					return null;
+				}
+=======
 				if ((next.contains("+")) || (next.contains("-")) || (next.contains("*")) || (next.contains("/")) || (next.contains("%"))) { //I couldn't get a regular expression to work.
 				out.println("Invalid expression: separate values and operators with spaces.");
 				stack.clear();
 				return null;
 			}
+>>>>>>> 23f55099f5810898e0b5ac2cf58196cab733c79b
 				stack.push(new Long(next));
 			}
 		}
@@ -47,14 +54,15 @@ public class RPNCalculator {
 	}
 	
 	public static void main(String[] args) {
-		out.println("RPN Calculator. Type in an expression in reverse Polish or postfix notation and press Enter to print the result. Integers only because Java is finicky with types. Press q or Ctrl + C to quit.");
+		out.println("RPN Calculator. Type in an expression, with values and operators separated by spaces, in reverse Polish or postfix notation and press Enter to print the result. Integers (between -2^63 and 2^63 - 1) only because Java is finicky with types. Press q or Ctrl + C to quit.");
 		out.print(">> ");
 		Scanner scanner = new Scanner(System.in);
 		for (;;) {
 			String next = "";
 			for (;;) {
 				next = scanner.nextLine().trim();
-				if (!(next.equals(""))) {break;}
+				if (next.equals("")) {out.print(">> ");}
+				else {break;}
 			}
 			if (next.equals("q")) {return;}
 			Long nextEvaluate = evaluate(next);
@@ -63,4 +71,7 @@ public class RPNCalculator {
 		}
 	}
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 23f55099f5810898e0b5ac2cf58196cab733c79b
