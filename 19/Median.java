@@ -1,4 +1,3 @@
-import static java.lang.reflect.Array.newInstance;
 import static java.lang.System.arraycopy;
 import static java.lang.System.out;
 import java.util.Arrays;
@@ -15,7 +14,7 @@ public class Median<E extends Comparable<? super E>> {
 	}
 	
 	private PriorityQueue<E> max = new PriorityQueue<E>(11, new ReverseComparator<E>());
-	private PriorityQueue<E> min = new PriorityQueue<E>();
+	private PriorityQueue<E> min = new PriorityQueue<E>(); //Right-biased
 	
 	public Median() {}
 	
@@ -36,12 +35,10 @@ public class Median<E extends Comparable<? super E>> {
 		if (size() == 0) {return null;}
 		else if ((size() % 2) == 0) {
 			Comparable[] a = {max.peek(), min.peek()};
-			balance();
 			return (E[]) a;
 		}
 		else {
 			Comparable[] a = {min.peek()};
-			balance();
 			return (E[]) a;
 		}
 	}
@@ -81,6 +78,10 @@ public class Median<E extends Comparable<? super E>> {
 	
 	public static void main(String[] args) {
 		Median<Integer> m = new Median<Integer>();
+		out.println(m);
+		out.println(Arrays.toString(m.toArray()));
+		out.println(Arrays.toString(m.getMedian()));
+		out.println();
 		Random r = new Random();
 		for (int i = 0; i < 10; i++) {m.add(r.nextInt(100));}
 		out.println(m);
